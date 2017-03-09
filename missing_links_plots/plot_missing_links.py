@@ -4,12 +4,16 @@ Niema Moshiri 2016
 
 Plot missing links fraction vs. s/n for different simulation parameters.
 '''
-import sys,os,seaborn
+import sys,os
 import matplotlib.pyplot as plt
+import seaborn as sns
 from itertools import cycle
 from math import log
+from matplotlib import rcParams
 from numpy import linspace
 from statistics import mean,stdev
+sns.set_style("ticks")
+rcParams['font.family'] = 'serif'
 data = {} # data[cn_model][tn_model][exp_edges][num_seeds][s_over_n]
 
 # parse subsample missing links simulation data

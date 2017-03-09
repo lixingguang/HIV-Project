@@ -41,6 +41,7 @@ def infected_infectedby(tn):
         infected[u].add(v)
         infected_by[v] = u
     return infected,infected_by
+
 # subsample "s" nodes from the input transmission network (tn) and count missing links (general) once
 def subsample_and_missing_links(tn, s_over_n):
     from random import sample
@@ -51,13 +52,9 @@ def subsample_and_missing_links(tn, s_over_n):
         infected_nodes.update(infected[u])
     s = int(s_over_n*len(infected_nodes))
     sampled_nodes = set(sample(infected_nodes, s))
-    #print(len(sampled_nodes))
     missing_nodes = infected_nodes - sampled_nodes
     leaf_missing_nodes = missing_nodes - set(infected_by.values())
-    #print(len(missing_nodes))
-    #print(len(leaf_missing_nodes))
     seed_missing_nodes = missing_nodes - set(infected_by.keys())
-    #print(len(seed_missing_nodes))
     return float(len(missing_nodes-leaf_missing_nodes-seed_missing_nodes))/len(infected_nodes)
 
 # subsample "s" nodes from the input transmission network (tn) and count missing 2-links once
