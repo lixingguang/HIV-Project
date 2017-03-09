@@ -1,0 +1,26 @@
+{
+	"Sequencing": "Perfect",
+	"NodeSample": "Perfect",
+	"TransmissionTimeSample": "SI",
+	"EndCriteria": "Time",
+	"ContactNetworkGenerator": "File",
+	"Driver": "Default",
+	"Logging": "STDOUT",
+	"ContactNetwork": "NetworkX",
+	"SequenceEvolution": "NoMutation",
+	"PostValidation": "Dummy",
+	"SeedSequence": "Random",
+	"seed_sequence_length": 1,
+	"NodeEvolution": "None",
+	"SeedSelection": "Random",
+	"TreeNode": "Simple",
+	"SourceSample": "Random",
+	"TransmissionNodeSample": "SI",
+	"d_or_u": "u",
+
+	"contact_network_file": "/scratchfast/a1moshir/HIV_project/contact_networks/cn_ba_n100000_e10.txt",
+	"out_dir": "/scratchfast/a1moshir/HIV_project/FAVITES_Output_ba_n100000_e10_i20",
+	"num_seeds": 20,
+	"infection_rate": 0.005,
+	"end_time": "inf"
+}
