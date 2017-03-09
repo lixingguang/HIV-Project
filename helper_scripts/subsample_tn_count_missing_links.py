@@ -3,8 +3,10 @@
 Niema Moshiri 2016
 
 Subsample an input transmission network and determine the number of missing
-links, where a "missing link" is defined as node that was not sampled itself,
-but that was infected by a sampled node and infected a sampled node.
+links, where a "missing 2-link" is defined as node that was not sampled itself,
+but that was infected by a sampled node and infected a sampled node, and an
+arbitrary "missing link" is a chain of nodes that were infected by a sampled
+node and infected a sampled node.
 
 The script takes as input the transmission network, the contact network from
 which it was simulated, the desired fraction of nodes to subsample, and the
@@ -39,9 +41,27 @@ def infected_infectedby(tn):
         infected[u].add(v)
         infected_by[v] = u
     return infected,infected_by
-
-# subsample "s" nodes from the input transmission network (tn) and count missing links once
+# subsample "s" nodes from the input transmission network (tn) and count missing links (general) once
 def subsample_and_missing_links(tn, s_over_n):
+    from random import sample
+    infected,infected_by = infected_infectedby(tn)
+    infected_nodes = set()
+    for u in infected:
+        infected_nodes.add(u)
+        infected_nodes.update(infected[u])
+    s = int(s_over_n*len(infected_nodes))
+    sampled_nodes = set(sample(infected_nodes, s))
+    #print(len(sampled_nodes))
+    missing_nodes = infected_nodes - sampled_nodes
+    leaf_missing_nodes = missing_nodes - set(infected_by.values())
+    #print(len(missing_nodes))
+    #print(len(leaf_missing_nodes))
+    seed_missing_nodes = missing_nodes - set(infected_by.keys())
+    #print(len(seed_missing_nodes))
+    return float(len(missing_nodes-leaf_missing_nodes-seed_missing_nodes))/len(infected_nodes)
+
+# subsample "s" nodes from the input transmission network (tn) and count missing 2-links once
+def subsample_and_missing_2links(tn, s_over_n):
     from random import sample
     infected,infected_by = infected_infectedby(tn)
     infected_nodes = set()
