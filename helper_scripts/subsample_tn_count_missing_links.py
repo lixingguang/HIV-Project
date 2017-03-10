@@ -16,6 +16,7 @@ plain-text or Gzipped, but they must be in the FAVITES formats.
 The script outputs a list of comma-delimited missing link fractions.
 '''
 import sys
+from random import sample
 
 # print to stderr
 def eprint(*args, **kwargs):
@@ -42,9 +43,36 @@ def infected_infectedby(tn):
         infected_by[v] = u
     return infected,infected_by
 
+# subsample "s" nodes from the input transmission network (tn) and count missing links (tip-removal) once
+def subsample_and_missing_links_tip_removal(tn, s_over_n):
+    infected,infected_by = infected_infectedby(tn)
+    infected_nodes = set()
+    for u in infected:
+        infected_nodes.add(u)
+        infected_nodes.update(infected[u])
+    s = int(s_over_n*len(infected_nodes))
+    sampled_nodes = set(sample(infected_nodes, s))
+    missing_nodes = infected_nodes - sampled_nodes
+    seed_missing_nodes = missing_nodes - set(infected_by.keys())
+    tips = missing_nodes - set(infected_by.values())
+    missing_links = missing_nodes - seed_missing_nodes
+    while len(tips) > 0:
+        tip = tips.pop()
+        try:
+            missing_links.remove(tip)
+        except:
+            pass
+        u = infected_by[tip]
+        try:
+            infected[u].remove(u)
+        except:
+            pass
+        if len(infected[u]) == 0:
+            tips.add(u)
+    return float(len(missing_links))/len(infected_nodes)
+
 # subsample "s" nodes from the input transmission network (tn) and count missing links (general) once
 def subsample_and_missing_links(tn, s_over_n):
-    from random import sample
     infected,infected_by = infected_infectedby(tn)
     infected_nodes = set()
     for u in infected:
@@ -59,7 +87,6 @@ def subsample_and_missing_links(tn, s_over_n):
 
 # subsample "s" nodes from the input transmission network (tn) and count missing 2-links once
 def subsample_and_missing_2links(tn, s_over_n):
-    from random import sample
     infected,infected_by = infected_infectedby(tn)
     infected_nodes = set()
     for u in infected:
@@ -81,7 +108,7 @@ def subsample_and_missing_links_it(tn, s_over_n, it):
     out = []
     for i in range(it):
         eprint("Iteration " + str(i+1) + " of " + str(it) + "...")
-        out.append(subsample_and_missing_links(tn,s_over_n))
+        out.append(subsample_and_missing_links_tip_removal(tn,s_over_n))
     return out
 
 if __name__ == "__main__":
