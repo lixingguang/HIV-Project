@@ -7,10 +7,11 @@ Plot missing links fraction vs. s/n for different simulation parameters.
 import sys,os
 import matplotlib.pyplot as plt
 import seaborn as sns
+from fractions import Fraction
 from itertools import cycle
 from math import log
 from matplotlib import rcParams
-from numpy import linspace
+from numpy import append,array,linspace,unique
 from statistics import mean,stdev
 sns.set_style("ticks")
 rcParams['font.family'] = 'serif'
@@ -47,6 +48,7 @@ name = {1:'Low', 5:'Medium', 10:'High'}
 color = {1:'blue', 5:'orange', 10:'red'}
 linestyle = {'ba':'-', 'er':'--'}
 plt.figure()
+xticks = array([])
 for cn_model in ('ba','er'):
     for tn_model in data[cn_model]:
         for exp_edges in (1,5,10):
@@ -57,11 +59,15 @@ for cn_model in ('ba','er'):
                 label = cn_model.upper() + ' ' + tn_model.upper() + ' ' + name[exp_edges] + ' Connectivity'
                 for s_over_n in data[cn_model][tn_model][exp_edges][num_seeds]:
                     vals = data[cn_model][tn_model][exp_edges][num_seeds][s_over_n]
-                    x.append(log(s_over_n,2))
+                    x.append(s_over_n)
                     y.append(mean(vals))
                     yerr.append(stdev(vals))
+                    if len(xticks) < len(data[cn_model][tn_model][exp_edges][num_seeds]):
+                        xticks = append(xticks,Fraction(s_over_n).limit_denominator())
                 plt.errorbar(x, y, yerr=yerr, label=label, color=color[exp_edges], linestyle=linestyle[cn_model])
 plt.legend(bbox_to_anchor=(0.73, 0.18), borderaxespad=0., frameon=True, ncol=2)
+plt.xscale('log', basex=2)
+plt.xticks(unique(x),xticks)
 
 ''' # Use this to do all files in the current folder (more general)
 # set up colors and markers
@@ -98,8 +104,8 @@ for cn_model in data:
                 plt.errorbar(x, y, yerr=yerr, label=label, color=color, linestyle=linestyle, marker=marker)
 plt.legend(bbox_to_anchor=(0.7, 0.23), borderaxespad=0., frameon=True, ncol=3)
 '''
-plt.title(r"Missing Link Fraction vs. Log-2 Subsample Fraction $\left(\frac{s}{n}\right)$")
-plt.xlabel(r"Log-2 Subsample Fraction $\left(\frac{s}{n}\right)$")
+plt.title(r"Missing Link Fraction vs. Subsample Fraction $\left(\frac{s}{n}\right)$")
+plt.xlabel(r"Subsample Fraction $\left(\frac{s}{n}\right)$")
 plt.ylabel("Missing Link Fraction")
 plt.tight_layout()
 plt.show()
