@@ -42,6 +42,28 @@ for f in os.listdir('.'):
         exit(-1)
     data[cn_model][tn_model][exp_edges][num_seeds][s_over_n] = vals
 
+# Use this to do the specific figure for the proposal
+name = {1:'Low', 5:'Medium', 10:'High'}
+color = {1:'blue', 5:'orange', 10:'red'}
+linestyle = {'ba':'-', 'er':'--'}
+plt.figure()
+for cn_model in ('ba','er'):
+    for tn_model in data[cn_model]:
+        for exp_edges in (1,5,10):
+            for num_seeds in (20,):
+                x = []
+                y = []
+                yerr = []
+                label = cn_model.upper() + ' ' + tn_model.upper() + ' ' + name[exp_edges] + ' Connectivity'
+                for s_over_n in data[cn_model][tn_model][exp_edges][num_seeds]:
+                    vals = data[cn_model][tn_model][exp_edges][num_seeds][s_over_n]
+                    x.append(log(s_over_n,2))
+                    y.append(mean(vals))
+                    yerr.append(stdev(vals))
+                plt.errorbar(x, y, yerr=yerr, label=label, color=color[exp_edges], linestyle=linestyle[cn_model])
+plt.legend(bbox_to_anchor=(0.73, 0.18), borderaxespad=0., frameon=True, ncol=2)
+
+''' # Use this to do all files in the current folder (more general)
 # set up colors and markers
 num_plots = 0
 for cn_model in data:
@@ -53,6 +75,7 @@ colors = plt.cm.jet(linspace(0, 1, num_plots))
 markers = cycle((',', '+', '.', 'o', '*'))
 
 # generate plots
+
 p = 0
 plt.figure()
 for cn_model in data:
@@ -73,9 +96,10 @@ for cn_model in data:
                     y.append(mean(vals))
                     yerr.append(stdev(vals))
                 plt.errorbar(x, y, yerr=yerr, label=label, color=color, linestyle=linestyle, marker=marker)
+plt.legend(bbox_to_anchor=(0.7, 0.23), borderaxespad=0., frameon=True, ncol=3)
+'''
 plt.title(r"Missing Link Fraction vs. Log-2 Subsample Fraction $\left(\frac{s}{n}\right)$")
 plt.xlabel(r"Log-2 Subsample Fraction $\left(\frac{s}{n}\right)$")
 plt.ylabel("Missing Link Fraction")
-plt.legend(bbox_to_anchor=(0.7, 0.23), borderaxespad=0., frameon=True, ncol=3)
 plt.tight_layout()
 plt.show()
