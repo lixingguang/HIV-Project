@@ -39,17 +39,18 @@
 
     "SequenceEvolution":                               "GTRGammaSeqGen",
     "seqgen_path":                                     "seq-gen",
-    "seqgen_a_to_c":                                   0, # UPDATE THIS
-    "seqgen_a_to_g":                                   0, # UPDATE THIS
-    "seqgen_a_to_t":                                   0, # UPDATE THIS
-    "seqgen_c_to_g":                                   0, # UPDATE THIS
-    "seqgen_c_to_t":                                   0, # UPDATE THIS
-    "seqgen_g_to_t":                                   0, # UPDATE THIS
-    "seqgen_freq_a":                                   0, # UPDATE THIS
-    "seqgen_freq_c":                                   0, # UPDATE THIS
-    "seqgen_freq_g":                                   0, # UPDATE THIS
-    "seqgen_freq_t":                                   0, # UPDATE THIS
-    "seqgen_gamma_shape":                              0, # UPDATE THIS
+    # built RAxML tree on MSA and used FastTree to learn GTR params
+    "seqgen_a_to_c":                                   2.153828,
+    "seqgen_a_to_g":                                   8.464579,
+    "seqgen_a_to_t":                                   0.972153,
+    "seqgen_c_to_g":                                   0.941991,
+    "seqgen_c_to_t":                                   12.569672,
+    "seqgen_g_to_t":                                   1.000000,
+    "seqgen_freq_a":                                   0.3897,
+    "seqgen_freq_c":                                   0.1667,
+    "seqgen_freq_g":                                   0.2280,
+    "seqgen_freq_t":                                   0.2156,
+    "seqgen_gamma_shape":                              0.531880,
     "seqgen_num_gamma_rate_categories":                "",
 
     "Sequencing":                                      "GrinderSanger",
