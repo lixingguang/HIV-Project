@@ -1,0 +1,88 @@
+
+
+IMPORTANT WARNING: Sequences KJ723189 and KJ723017 are exactly identical
+
+
+IMPORTANT WARNING: Sequences KJ723189 and KJ723004 are exactly identical
+
+
+IMPORTANT WARNING: Sequences KJ723175 and KJ723115 are exactly identical
+
+IMPORTANT WARNING
+Found 3 sequences that are exactly identical to other sequences in the alignment.
+Normally they should be excluded from the analysis.
+
+Just in case you might need it, an alignment file with 
+sequence duplicates removed is printed to file SD_SubtypeB_639.aln.reduced
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.11 released by Alexandros Stamatakis on June 2017.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 830 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 0.00%
+
+RAxML rapid hill-climbing mode
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+Executing 1 inferences on the original alignment using 1 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 830
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC-PTHREADS-SSE3 -m GTRGAMMA -s SD_SubtypeB_639.aln -n SD_SubtypeB_639 -p 31671 -T 20 
+
+
+Partition: 0 with name: No Name Provided
+Base frequencies: 0.392 0.165 0.212 0.232 
+
+Inference[0]: Time 4107.939610 GAMMA-based likelihood -68918.254548, best rearrangement setting 25
+alpha[0]: 0.405129 rates[0] ac ag at cg ct gt: 1.765707 9.587649 0.691915 0.863348 10.282617 1.000000 
+
+
+Conducting final model optimizations on all 1 trees under GAMMA-based models ....
+
+Inference[0] final GAMMA-based Likelihood: -68918.173687 tree written to file /scratchfast/a1moshir/hiv-project/gtr_params/RAxML_result.SD_SubtypeB_639
+
+
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -68918.173687 .... 
+
+Final GAMMA-based Score of best tree -68918.170823
+
+Program execution info written to /scratchfast/a1moshir/hiv-project/gtr_params/RAxML_info.SD_SubtypeB_639
+Best-scoring ML tree written to: /scratchfast/a1moshir/hiv-project/gtr_params/RAxML_bestTree.SD_SubtypeB_639
+
+Overall execution time: 4218.959468 secs or 1.171933 hours or 0.048831 days
+
