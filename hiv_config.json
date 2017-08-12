@@ -11,7 +11,8 @@
     "EndCriteria":                                     "GEMF",
     "gemf_path":                                       "GEMF",
 
-    "Logging":                                         "STDOUT",
+    "Logging":                                         "FileSTDOUT",
+    "log_file":                                        "~/FAVITES.log",
 
     "NodeAvailability":                                "Perfect",
 
