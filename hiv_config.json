@@ -11,7 +11,7 @@
     "EndCriteria":                                     "GEMF",
     "gemf_path":                                       "GEMF",
 
-    "Logging":                                         "STDOUT",
+    "Logging":                                         "File",
 
     "NodeAvailability":                                "Perfect",
 
