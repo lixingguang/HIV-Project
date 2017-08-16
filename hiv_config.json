@@ -28,10 +28,8 @@
 
     "PostValidation":                                  "Dummy",
 
-    "SeedSelection":                                   "ClustersBernoulli",
-    "seed_k":                                          4,
-    "seed_m":                                          10000,
-    "seed_p":                                          0.7,
+    "SeedSelection":                                   "Random",
+    "num_seeds":                                       4,
 
     "SeedSequence":                                    "VirusCoalescentGTRGamma",
     "hmmemit_path":                                    "hmmemit",
