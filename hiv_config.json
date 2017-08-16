@@ -31,7 +31,8 @@
     "SeedSelection":                                   "Random",
     "num_seeds":                                       4,
 
-    "SeedSequence":                                    "VirusCoalescentGTRGamma",
+    #"SeedSequence":                                    "VirusCoalescentGTRGamma",
+    "SeedSequence": "Virus", # just to get output (coalescent tree slow)
     "hmmemit_path":                                    "hmmemit",
     "seed_population":                                 18, # results in ~30 years for height of seed tree
     "seqgen_path":                                     "seq-gen",
