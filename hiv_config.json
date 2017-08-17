@@ -96,7 +96,7 @@
     "hiv_s_to_i1_by_i2":                               0.09,
     "hiv_s_to_i1_by_i3":                               0,
     "hiv_s_to_i1_by_i4":                               0,
-    "hiv_s_to_i1_seed":                                0.05*0.09, # 5% of rate from I2
+    "hiv_s_to_i1_seed":                                0, # 0.05*0.09, # 5% of rate from I2
 
     "TreeNode":                                        "Simple",
 
