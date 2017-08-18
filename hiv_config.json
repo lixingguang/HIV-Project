@@ -32,8 +32,7 @@
     "SeedSelection":                                   "Random",
     "num_seeds":                                       2,
 
-    #"SeedSequence":                                    "VirusCoalescentGTRGamma",
-    "SeedSequence": "Virus", # just to get output (coalescent tree slow)
+    "SeedSequence":                                    "VirusCoalescentGTRGamma",
     "hmmemit_path":                                    "hmmemit",
     "seed_population":                                 18, # results in ~30 years for height of seed tree
     "seqgen_path":                                     "seq-gen",
@@ -63,7 +62,7 @@
     "TransmissionNodeSample":                          "GEMF",
 
     "TransmissionTimeSample":                          "HIVARTGranichGEMF",
-    "end_time":                                        10, # years
+    "end_time":                                        15, # years
     "hiv_a1_to_a2":                                    52./12.,
     "hiv_a1_to_d":                                     0,
     "hiv_a1_to_i1":                                    12./25.,
