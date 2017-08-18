@@ -17,6 +17,7 @@
 
     "NodeEvolution":                                   "VirusTreeSimulator",
     "java_path":                                       "java",
+    "nw_rename_path":                                  "nw_rename",
     "vts_growthRate":                                  2.851904, # per year (PANGEA)
     "vts_model":                                       "logistic",
     "vts_n0":                                          1,
@@ -29,7 +30,7 @@
     "PostValidation":                                  "Dummy",
 
     "SeedSelection":                                   "Random",
-    "num_seeds":                                       4,
+    "num_seeds":                                       2,
 
     #"SeedSequence":                                    "VirusCoalescentGTRGamma",
     "SeedSequence": "Virus", # just to get output (coalescent tree slow)
