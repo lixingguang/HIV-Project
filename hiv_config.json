@@ -101,6 +101,6 @@
     "TreeNode":                                        "Simple",
 
     "TreeUnit":                                        "LogNormal",
-    "tree_rate_mean":                                  -20, #-6.164298, # per year (PANGEA)
+    "tree_rate_mean":                                  -8, #-6.164298, # per year (PANGEA)
     "tree_rate_stdev":                                 0.3, # per year (PANGEA)
 }
