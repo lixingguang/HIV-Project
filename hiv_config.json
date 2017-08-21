@@ -34,7 +34,7 @@
 
     "SeedSequence":                                    "VirusCoalescentGTRGamma",
     "hmmemit_path":                                    "hmmemit",
-    "seed_population":                                 18, # results in ~30 years for height of seed tree
+    "seed_population":                                 5,#18, # results in ~30 years for height of seed tree
     "seqgen_path":                                     "seq-gen",
     "seqgen_a_to_c":                                   1.765707,
     "seqgen_a_to_g":                                   9.587649,
@@ -101,6 +101,6 @@
     "TreeNode":                                        "Simple",
 
     "TreeUnit":                                        "LogNormal",
-    "tree_rate_mean":                                  -6.164298, # per year (PANGEA)
+    "tree_rate_mean":                                  -20, #-6.164298, # per year (PANGEA)
     "tree_rate_stdev":                                 0.3, # per year (PANGEA)
 }
