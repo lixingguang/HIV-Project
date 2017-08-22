@@ -32,7 +32,7 @@
     "SeedSelection":                                   "Random",
     "num_seeds":                                       2,
 
-    "SeedSequence":                                    "VirusCoalescentGTRGamma",
+    "SeedSequence":                                    "VirusMeanCoalescentGTRGamma",
     "hmmemit_path":                                    "hmmemit",
     "seed_tree_height":                                5, # years
     "seqgen_path":                                     "seq-gen",
