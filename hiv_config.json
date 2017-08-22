@@ -34,7 +34,7 @@
 
     "SeedSequence":                                    "VirusCoalescentGTRGamma",
     "hmmemit_path":                                    "hmmemit",
-    "seed_population":                                 5,#18, # results in ~30 years for height of seed tree
+    "seed_tree_height":                                5, # years
     "seqgen_path":                                     "seq-gen",
     "seqgen_a_to_c":                                   1.765707,
     "seqgen_a_to_g":                                   9.587649,
