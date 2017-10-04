@@ -15,12 +15,7 @@ def cut(node):
         if descendant.DELETED:
             continue
         descendant.DELETED = True
-        if descendant.parent_node:
-            parent_children = descendant.parent_node.child_nodes()
-            if descendant == parent_children[0]:
-                descendant.parent_node.left_dist = 0
-            else:
-                descendant.parent_node.right_dist = 0
+        descendant.left_dist = 0; descendant.right_dist = 0; descendant.edge_length = 0
         desc_children = descendant.child_nodes()
         if len(desc_children) == 0:
             cluster.append(descendant.taxon.label)
@@ -30,17 +25,15 @@ def cut(node):
     return cluster
 
 def min_clusters_threshold(tree,threshold):
-    # check for validity and create all "dist" variables (distance to furthest leaf descendant)
+    # check for validity and prep
+    tree.seed_node.edge_length = 0
     leaves = set()
     for node in tree.postorder_node_iter():
         node.DELETED = False
         child_nodes = node.child_nodes()
         assert len(child_nodes) in {0,2}, "ERROR: Multifurcating tree. Resolve polytomies first"
         if len(child_nodes) == 0:
-            node.left_dist = 0; node.right_dist = 0; leaves.add(node.taxon.label)
-        else:
-            node.left_dist = max(child_nodes[0].left_dist,child_nodes[0].right_dist) + child_nodes[0].edge_length
-            node.right_dist = max(child_nodes[1].left_dist,child_nodes[1].right_dist) + child_nodes[1].edge_length
+            leaves.add(node.taxon.label)
 
     # perform algorithm
     clusters = []
@@ -49,30 +42,28 @@ def min_clusters_threshold(tree,threshold):
         if node.DELETED:
             continue
 
-        # check my true undeleted max distance to leaf
-        dist = node.edge_length
-        if dist is None:
-            dist = 0
+        # find my undeleted max distances to leaf
         child_nodes = node.child_nodes()
-        if len(child_nodes) != 0:
-            if not child_nodes[0].DELETED and not child_nodes[1].DELETED:
-                dist += max(node.left_dist,node.right_dist)
-            elif not child_nodes[0].DELETED:
-                dist += node.left_dist; node.right_dist = 0
-            elif not child_nodes[1].DELETED:
-                dist += node.right_dist; node.left_dist = 0
-        cluster = []
+        if len(child_nodes) == 0:
+            node.left_dist = 0; node.right_dist = 0
+        else:
+            node.left_dist = max(child_nodes[0].left_dist,child_nodes[0].right_dist) + child_nodes[0].edge_length
+            node.right_dist = max(child_nodes[1].left_dist,child_nodes[1].right_dist) + child_nodes[1].edge_length
 
         # if my kids are screwing things up, cut out the longer one
         if node.left_dist + node.right_dist > threshold:
             if node.left_dist > node.right_dist:
                 cluster = cut(child_nodes[0])
+                node.left_dist = 0
             else:
                 cluster = cut(child_nodes[1])
+                node.right_dist = 0
 
         # if I'm screwing things up, cut me out
-        elif dist > threshold:
+        elif max(node.left_dist,node.right_dist) + node.edge_length > threshold:
             cluster = cut(node)
+        else:
+            cluster = []
 
         # add cluster
         if len(cluster) != 0:
