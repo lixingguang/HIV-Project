@@ -15,6 +15,12 @@ def cut(node):
         if descendant.DELETED:
             continue
         descendant.DELETED = True
+        if descendant.parent_node:
+            parent_children = descendant.parent_node.child_nodes()
+            if descendant == parent_children[0]:
+                descendant.parent_node.left_dist = 0
+            else:
+                descendant.parent_node.right_dist = 0
         desc_children = descendant.child_nodes()
         if len(desc_children) == 0:
             cluster.append(descendant.taxon.label)
@@ -57,16 +63,16 @@ def min_clusters_threshold(tree,threshold):
                 dist += node.right_dist; node.left_dist = 0
         cluster = []
 
-        # if I'm screwing things up, cut me out
-        if dist > threshold:
-            cluster = cut(node)
-
         # if my kids are screwing things up, cut out the longer one
-        elif node.left_dist + node.right_dist > threshold:
+        if node.left_dist + node.right_dist > threshold:
             if node.left_dist > node.right_dist:
                 cluster = cut(child_nodes[0])
             else:
                 cluster = cut(child_nodes[1])
+
+        # if I'm screwing things up, cut me out
+        elif dist > threshold:
+            cluster = cut(node)
 
         # add cluster
         if len(cluster) != 0:
