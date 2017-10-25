@@ -6,7 +6,7 @@
     "num_edges_from_new":                              2,
 
     "Driver":                                          "Default",
-    "out_dir":                                         "~/FAVITES_HIV_output",
+    "out_dir":                                         "FAVITES_output",
 
     "EndCriteria":                                     "GEMF",
     "gemf_path":                                       "GEMF",
@@ -30,11 +30,11 @@
     "PostValidation":                                  "Dummy",
 
     "SeedSelection":                                   "Random",
-    "num_seeds":                                       2,
+    "num_seeds":                                       8,
 
     "SeedSequence":                                    "VirusMeanCoalescentGTRGamma",
     "hmmemit_path":                                    "hmmemit",
-    "seed_tree_height":                                5, # years
+    "seed_tree_height":                                25, # years
     "seqgen_path":                                     "seq-gen",
     "seqgen_a_to_c":                                   1.765707,
     "seqgen_a_to_g":                                   9.587649,
@@ -62,7 +62,7 @@
     "TransmissionNodeSample":                          "GEMF",
 
     "TransmissionTimeSample":                          "HIVARTGranichGEMF",
-    "end_time":                                        15, # years
+    "end_time":                                        10, # years
     "hiv_a1_to_a2":                                    52./12.,
     "hiv_a1_to_d":                                     0,
     "hiv_a1_to_i1":                                    12./25.,
@@ -101,6 +101,6 @@
     "TreeNode":                                        "Simple",
 
     "TreeUnit":                                        "LogNormal",
-    "tree_rate_mean":                                  -8, #-6.164298, # per year (PANGEA)
+    "tree_rate_mean":                                  -6, # -6.164298, # per year (PANGEA)
     "tree_rate_stdev":                                 0.3, # per year (PANGEA)
 }
