@@ -6,7 +6,7 @@
     "num_edges_from_new":                              2,
 
     "Driver":                                          "Default",
-    "out_dir":                                         "FAVITES_output",
+    "out_dir":                                         "HIV_FAVITES",
 
     "EndCriteria":                                     "GEMF",
     "gemf_path":                                       "GEMF",
@@ -34,7 +34,7 @@
 
     "SeedSequence":                                    "VirusMeanCoalescentGTRGamma",
     "hmmemit_path":                                    "hmmemit",
-    "seed_tree_height":                                25, # years
+    "seed_population":                                 20,
     "seqgen_path":                                     "seq-gen",
     "seqgen_a_to_c":                                   1.765707,
     "seqgen_a_to_g":                                   9.587649,
@@ -57,7 +57,7 @@
 
     "SourceSample":                                    "Random",
 
-    "TimeSample":                                      "GranichFirstART",
+    "TimeSample":                                      "End",
 
     "TransmissionNodeSample":                          "GEMF",
 
@@ -88,12 +88,12 @@
     "hiv_ns_to_d":                                     0,
     "hiv_ns_to_s":                                     999999,
     "hiv_s_to_d":                                      0,
-    "hiv_s_to_i1_by_a1":                               0.0225,
+    "hiv_s_to_i1_by_a1":                               0.01125, #0.0225,
     "hiv_s_to_i1_by_a2":                               0,
     "hiv_s_to_i1_by_a3":                               0,
     "hiv_s_to_i1_by_a4":                               0,
-    "hiv_s_to_i1_by_i1":                               0.45,
-    "hiv_s_to_i1_by_i2":                               0.09,
+    "hiv_s_to_i1_by_i1":                               0.225, #0.45,
+    "hiv_s_to_i1_by_i2":                               0.045, #0.09,
     "hiv_s_to_i1_by_i3":                               0,
     "hiv_s_to_i1_by_i4":                               0,
     "hiv_s_to_i1_seed":                                0, # 0.05*0.09, # 5% of rate from I2
@@ -101,6 +101,6 @@
     "TreeNode":                                        "Simple",
 
     "TreeUnit":                                        "LogNormal",
-    "tree_rate_mean":                                  -6, # -6.164298, # per year (PANGEA)
-    "tree_rate_stdev":                                 0.3, # per year (PANGEA)
+    "tree_rate_mean":                                  -5.5,#-6.164298, # per year (PANGEA)
+    "tree_rate_stdev":                                 0.2, # per year (PANGEA)
 }
